@@ -1,6 +1,6 @@
 import sys
 
-LENGTH_OF_SAMPLE = 1500
+LENGTH_OF_SAMPLE = 500
 OFFSET = 30
 
 
@@ -48,10 +48,11 @@ def swap_duplications(string, duplications):
         idx = string.find(duplications[i][0])
         while idx != -1:
             string = string.replace(duplications[i][0], duplications[i][1])
+            if "|{0}={1}".format(duplications[i][0], duplications[i][1]) not in key:
+                key.append("|{0}={1}".format(duplications[i][0], duplications[i][1]))
             idx = string.find(duplications[i][0])
-        key.append("|{0}={1}".format(duplications[i][0], duplications[i][1]))
 
-    return string
+    return "".join(key) + string
 
 
 def write_to_file(string):
@@ -67,8 +68,9 @@ def main():
     if sys.argv[1] == "-compress":
         string = read_file(sys.argv[2])
 
-        duplications = scan_string(string)
-        string = swap_duplications(string, duplications)
+        for i in range(5):
+            duplications = scan_string(string)
+            string = swap_duplications(string, duplications)
 
         write_to_file(string)
     elif sys.argv[1] == "-decompress":
