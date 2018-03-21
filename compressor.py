@@ -2,9 +2,7 @@ import sys
 import os
 
 LENGTH_OF_SAMPLE = 2500
-OFFSET = 30
 MARKER = "<#&#>"
-STARTING_CHAR = '\u00a1'
 
 
 def read_file(file_name):
@@ -31,11 +29,10 @@ def swap(string, keys, mode="encode"):
 
     # DECODE MODE
     elif mode == "decode":
-        for i in range(len(keys)):
+        for key in keys:
             while True:
-                string = string.replace(keys[i][0], keys[i][1])
-                pos = string.find(keys[i][0])
-
+                string = string.replace(key[0], key[1])
+                pos = string.find(key[0])
                 if pos == -1:
                     break
         return string
@@ -48,22 +45,23 @@ def encode(string):
 
     duplications = []
     sample = string[:LENGTH_OF_SAMPLE]
-    char_value = ord(STARTING_CHAR)
+    char_value = ord('\u00a1')
 
-    for i in range(len(sample) - OFFSET):
-        for j in range(i + 1, len(sample) - OFFSET):
+    for i in range(len(sample)):
+        for j in range(i + 1, len(sample)):
 
-            if sample[i] == sample[j] and sample[i + 1] == sample[j + 1]:
-
-                n = 0
-                word = []
-                while sample[i + n] == sample[j + n]:
-                    word.append(sample[i + n])
-                    n += 1
-
-                word = "".join(word)
-                if word not in duplications:
-                    duplications.append(word)
+            try:
+                if sample[i] == sample[j] and sample[i + 1] == sample[j + 1]:
+                    n = 0
+                    word = []
+                    while sample[i + n] == sample[j + n]:
+                        word.append(sample[i + n])
+                        n += 1
+                    word = "".join(word)
+                    if word not in duplications:
+                        duplications.append(word)
+            except IndexError:
+                pass
 
     duplications.sort()
     duplications.sort(key=len, reverse=True)
