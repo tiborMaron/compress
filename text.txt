@@ -2038,10 +2038,10 @@ You can also use the basic Google search as a grammar check. To find out if the 
 feminine (or neuter), what case ending works after a particular preposition, etc... I usually use
 Google rather than looking it up.
 In this case you would need to use quotation marks “ ” around what you are searching for. If you
-want to find out if you need to say commencer faire, commencer ati faire, or commencer de faire in
+want to find out if you need to say commencer faire, commencer à faire, or commencer de faire in
 French, for example, just search for each one. You will usually get some results for the wrong one
 (the words may come together in less common ways for example), but in this case you'd get 100
-times as much for the ati version.
+times as much for the à version.
 To see if coche is masculine or feminine, you can use the dictionaries below, or just put “coche
 pequeño” and “coche pequeña” (masculine then feminine) into Google and see which one gives a
 dramatically higher number of results.
@@ -2167,8 +2167,8 @@ religion, history and many other things that us humans tend to share internation
 When you start learning a language, if you look out for these cognates you will start immediately
 with hundreds of words, even in distant languages.
 For example, in Italian you can turn on your computer, and in (Brazilian) Portuguese you move the
-mouse, in Russian you connect to the ИнTернеT (exact transliteration of Internet, И=I, н=n and
-р=r, can you read it now?), and in Japanese you check your E メール (second part
+mouse, in Russian you connect to the ng atT nattuat natT (exact transliteration of Internet, ng =I, at=n and
+tu=r, can you read it now?), and in Japanese you check your E メール (second part
 transliteration, “me-ru”, their way of approximating the pronunciation of “mail”), the name of the
 program you use to surf the net in Turkish is Mozilla Firefox, and you may use “Microsoft
 Windows” in the Somali language, or perhaps “Linux” in Euskara to do this.
@@ -2194,8 +2194,7 @@ There are also patterns of particular word-endings working a huge amount of the 
 words ending in -tion in English, are almost always the same in Latin languages. Action, nation,
 precipitation, solution, frustration, tradition, communication, extinction and thousands more -tion
 words are written exactly the same in French (although the pronunciation changes a bit) and in other
-languages only change slightly: Spanish is -ción, Italian is -zione and Portuguese is -on
-ão.
+languages only change slightly: Spanish is -ción, Italian is -zione and Portuguese is -ção.
 There’s also -tude (like gratitude, magnitude), -sion (explosion, expression), -ment (encouragement,
 segment), -age (garage, camouflage) and loads more.
 You will occasionally run across a false friend, but this is the exception and you will learn these
@@ -2205,8 +2204,7 @@ look at this list of 1,700 examples in French.
 1,700 is not a bad start, but that is actually just for true cognates of not a single letter being
 Page 52
 different. If you are flexible enough to see what the word looks similar to (exemple, hélicoptère...
-porto, capitano... astronom
-Wha, Saturno, etc.) you can bring that number to tens of thousands of
+porto, capitano... astronomía, Saturno, etc.) you can bring that number to tens of thousands of
 words!
 ACCENT REDUCTION
 Once you are speaking confidently in a language, and even as you are improving towards speaking
