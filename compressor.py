@@ -1,10 +1,10 @@
 import sys
 import os
 
-LENGTH_OF_SAMPLE = 1000
+LENGTH_OF_SAMPLE = 2500
 OFFSET = 30
 MARKER = "<#&#>"
-STARTING_CHAR = '\u0100'
+STARTING_CHAR = '\u00a1'
 
 
 def read_file(file_name):
@@ -13,30 +13,28 @@ def read_file(file_name):
     return string
 
 
-def swap(string, duplications, mode="encode"):
+def swap(string, keys, mode="encode"):
 
     # ENCODE MODE
     if mode == "encode":
         final_keys = []
-        for i in range(len(duplications)):
-            while True:
-                string = string.replace(duplications[i][0], duplications[i][1])
-                key = "|{0}={1}".format(duplications[i][0], duplications[i][1])
+        for key in keys:
 
-                if key not in final_keys:
-                    final_keys.append(key)
+            pos = string.find(key[0])
+            if pos != -1:
+                while pos != -1:
+                    string = string.replace(key[0], key[1])
+                    pos = string.find(key[0])
+                final_keys.append("|{0}={1}".format(key[0], key[1]))
 
-                pos = string.find(duplications[i][0])
-                if pos == -1:
-                    break
         return "".join(final_keys) + MARKER + string
 
     # DECODE MODE
     elif mode == "decode":
-        for i in range(len(duplications)):
+        for i in range(len(keys)):
             while True:
-                string = string.replace(duplications[i][0], duplications[i][1])
-                pos = string.find(duplications[i][0])
+                string = string.replace(keys[i][0], keys[i][1])
+                pos = string.find(keys[i][0])
 
                 if pos == -1:
                     break
@@ -63,15 +61,22 @@ def encode(string):
                     word.append(sample[i + n])
                     n += 1
 
-                while string.find(chr(char_value)) != -1:
-                    char_value += 1
+                word = "".join(word)
+                if word not in duplications:
+                    duplications.append(word)
 
-                item = ("".join(word), chr(char_value))
-                duplications.append(item)
-                char_value += 1
+    duplications.sort()
+    duplications.sort(key=len, reverse=True)
 
-    duplications.sort(key=lambda t: len(t[0]), reverse=True)
-    return swap(string, duplications)
+    keys = []
+    for item in duplications:
+        while string.find(chr(char_value)) != -1:
+            char_value += 1
+        temp = (item, chr(char_value))
+        keys.append(temp)
+        char_value += 1
+
+    return swap(string, keys)
 
 
 def decode(string):
