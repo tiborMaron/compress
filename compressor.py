@@ -1,7 +1,8 @@
 import sys
 import os
 
-LENGTH_OF_SAMPLE = 750
+LENGTH_OF_SAMPLE = 1000
+OFFSET = 30
 MARKER = "<#&#>"
 STARTING_CHAR = '\u0100'
 
@@ -51,23 +52,23 @@ def encode(string):
     sample = string[:LENGTH_OF_SAMPLE]
     char_value = ord(STARTING_CHAR)
 
-    for i in range(len(sample)):
-        for j in range(i + 1, len(sample)):
+    for i in range(len(sample) - OFFSET):
+        for j in range(i + 1, len(sample) - OFFSET):
 
-            try:
-                if sample[i] == sample[j] and sample[i + 1] == sample[j + 1]:
+            if sample[i] == sample[j] and sample[i + 1] == sample[j + 1]:
 
-                    n = 0
-                    word = []
-                    while sample[i + n] == sample[j + n]:
-                        word.append(sample[i + n])
-                        n += 1
+                n = 0
+                word = []
+                while sample[i + n] == sample[j + n]:
+                    word.append(sample[i + n])
+                    n += 1
 
-                    item = ("".join(word), chr(char_value))
-                    duplications.append(item)
+                while string.find(chr(char_value)) != -1:
                     char_value += 1
-            except IndexError:
-                pass
+
+                item = ("".join(word), chr(char_value))
+                duplications.append(item)
+                char_value += 1
 
     duplications.sort(key=lambda t: len(t[0]), reverse=True)
     return swap(string, duplications)
