@@ -2,6 +2,7 @@ import sys
 import os
 
 LENGTH_OF_SAMPLE = 2500
+STARTING_CHAR = '\u00a1'
 MARKER = "<#&#>"
 
 
@@ -38,15 +39,8 @@ def swap(string, keys, mode="encode"):
         return string
 
 
-def encode(string):
-
-    if string.find(MARKER) != -1:
-        raise ValueError
-
+def find_duplications(sample):
     duplications = []
-    sample = string[:LENGTH_OF_SAMPLE]
-    char_value = ord('\u00a1')
-
     for i in range(len(sample)):
         for j in range(i + 1, len(sample)):
 
@@ -65,6 +59,18 @@ def encode(string):
 
     duplications.sort()
     duplications.sort(key=len, reverse=True)
+    return duplications
+
+
+def encode(string):
+
+    if string.find(MARKER) != -1:
+        raise ValueError
+
+    sample = string[:LENGTH_OF_SAMPLE]
+    char_value = ord(STARTING_CHAR)
+
+    duplications = find_duplications(sample)
 
     keys = []
     for item in duplications:
